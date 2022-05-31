@@ -32,7 +32,7 @@ export const db = getFirestore();
 
 
 /**
- * Save a New Task in Firestore
+ * Save a New Class in Firestore
  * @param {string} Asignatura_nombre the title of the Task
  * @param {string} Asignatura_Descripción the description of the Task
  */
@@ -52,10 +52,13 @@ export const onGetClases = (callback) =>
 
 
 
+
 /**
  *
  * @param {string} id Task ID
  */
+
+
 export const deleteClase = (id) => deleteDoc(doc(db, "Clase", id));
 
 export const getClase = (id) => getDoc(doc(db, "Clase", id));
