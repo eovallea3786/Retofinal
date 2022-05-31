@@ -33,24 +33,34 @@ export const db = getFirestore();
 
 /**
  * Save a New Task in Firestore
- * @param {string} title the title of the Task
- * @param {string} description the description of the Task
+ * @param {string} Asignatura_nombre the title of the Task
+ * @param {string} Asignatura_Descripción the description of the Task
  */
-export const saveTask = (title, description) =>
-    addDoc(collection(db, "tasks"), { title, description });
+export const saveClase = (Asignatura_nombre, Asignatura_Descripción) =>
+    addDoc(collection(db, "Clase"), { Asignatura_nombre, Asignatura_Descripción });
 
-export const onGetTasks = (callback) =>
+export const onGetClases = (callback) =>
+    onSnapshot(collection(db, "Clase"), callback);
+
+/**
+ * export const saveTask = (title, description) =>
+    addDoc(collection(db, "tasks"), { title, description });
+    
+    export const onGetTasks = (callback) =>
     onSnapshot(collection(db, "tasks"), callback);
+ */
+
+
 
 /**
  *
  * @param {string} id Task ID
  */
-export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
+export const deleteClase = (id) => deleteDoc(doc(db, "Clase", id));
 
-export const getTask = (id) => getDoc(doc(db, "tasks", id));
+export const getClase = (id) => getDoc(doc(db, "Clase", id));
 
-export const updateTask = (id, newFields) =>
-    updateDoc(doc(db, "tasks", id), newFields);
+export const updateClase = (id, newFields) =>
+    updateDoc(doc(db, "Clase", id), newFields);
 
-export const getTasks = () => getDocs(collection(db, "tasks"));
+export const getClases = () => getDocs(collection(db, "Clase"));

@@ -14,37 +14,29 @@
     <div class="container p-4">
         <div class="row">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card text-white">
                     <div class="card-body">
-                        <h1 class="h4">Add Task</h1>
-
-                        <form id="task-form">
+                        <form id="matriculas-form">
+                            <h1 class="h4">Estudiante</h1>
                             <label for="title">Estudiante:</label>
-                            <input type="text" id="task-title" class="form-control mb-3" class="My First Title" placeholder="Task Title" autofocus />
-
-
-
-                            <label for="description">Description:</label>
-                            <textarea id="task-description" rows="3" class="form-control mb-3" placeholder="Task Description"></textarea>
-
-                            <button class="btn btn-primary" id="btn-task-form">Save</button>
+                            <!--<input type="text" id="task-title" class="form-control mb-3" class="My First Title" placeholder="Task Title" autofocus />-->
+                            <input type="text" id="Estudiante_documento" class="form-control mb-3" class="Estudiante_documento" placeholder="Documento" autofocus />
+                            <input type="text" id="Estudiante_apellidos" class="form-control mb-3" class="Estudiante_apellidos" placeholder="Apellidos" />
+                            <input type="text" id="Estudiante_nombres" class="form-control mb-3" class="Estudiante_nombres" placeholder="Nombres" />
+                            <h1 class="h4">Asignatura</h1>
+                            <label for="title">Asignatura:</label>
+                            <input type="text" id="Asignatura_curso" class="form-control mb-3" class="Asignatura_curso" placeholder="Curso" />
+                            <input type="text" id="Asignatura_nombre" class="form-control mb-3" class="Asignatura_nombre" placeholder="Nombre Asignatura" />
+                            <textarea id="Asignatura_Descripción" rows="3" class="form-control mb-3" placeholder="Descripción de la asignatura"></textarea>
+                            <!--<label for="description">Description:</label>
+                            <textarea id="task-description" rows="3" class="form-control mb-3" placeholder="Task Description"></textarea>-->
+                            <button class="btn btn-primary" id="btn-matriculas-form">Guardar</button>
                         </form>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="h4">Add Task</h1>
-                        <label for="title">Matricula:</label>
-                        <input type="text" id="task-title" class="form-control mb-3" class="My First Title" placeholder="Task Title" autofocus />
-                    </div>
-
-                    <div class="card-body">
-                        <h1 class="h4">Add Task</h1>
-                        <label for="title">Clase:</label>
-                        <input type="text" id="task-title" class="form-control mb-3" class="My First Title" placeholder="Task Title" autofocus />
                     </div>
                 </div>
             </div>
             <!-- Tasks List -->
-            <div class="col-md-6" id="tasks-container"></div>
+            <div class="col-md-6" id="matriculas-container"></div>
         </div>
     </div>
     <script src="./index.js" type="module"></script>

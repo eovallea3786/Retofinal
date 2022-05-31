@@ -1,14 +1,14 @@
 import {
-    onGetTasks,
-    saveTask,
-    deleteTask,
-    getTask,
-    updateTask,
-    getTasks,
+    onGetClases,
+    saveClase,
+    deleteClase,
+    getClase,
+    updateClase,
+    getClases,
 } from "./firebase.js";
 
-const taskForm = document.getElementById("task-form");
-const tasksContainer = document.getElementById("tasks-container");
+const matricualasForm = document.getElementById("matriculas-form");
+const matriculasContainer = document.getElementById("matriculas-container");
 
 let editStatus = false;
 let id = "";
@@ -19,50 +19,50 @@ window.addEventListener("DOMContentLoaded", async(e) => {
     //   console.log(doc.data());
     // });
 
-    onGetTasks((querySnapshot) => {
-        tasksContainer.innerHTML = "";
+    onGetClases((querySnapshot) => {
+        matriculasContainer.innerHTML = "";
 
         querySnapshot.forEach((doc) => {
-            const task = doc.data();
+            const Clase = doc.data();
 
-            tasksContainer.innerHTML += `
+            matriculasContainer.innerHTML += `
         <div class="card card-body mt-2 border-primary">
-      <h3 class="h5">${task.title}</h3>
-      <p>${task.description}</p>
+      <h3 class="h5">${Clase.Asignatura_nombre}</h3>
+      <p>${Clase.Asignatura_Descripción}</p>
       <div>
         <button class="btn btn-primary btn-delete" data-id="${doc.id}">
-          🗑 Delete
+          🗑 Borrar
         </button>
         <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
-          🖉 Edit
+          🖉 Editar
         </button>
       </div>
     </div>`;
         });
 
-        const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+        const btnsDelete = matriculasContainer.querySelectorAll(".btn-delete");
         btnsDelete.forEach((btn) =>
             btn.addEventListener("click", async({ target: { dataset } }) => {
                 try {
-                    await deleteTask(dataset.id);
+                    await deleteClase(dataset.id);
                 } catch (error) {
                     console.log(error);
                 }
             })
         );
 
-        const btnsEdit = tasksContainer.querySelectorAll(".btn-edit");
+        const btnsEdit = matriculasContainer.querySelectorAll(".btn-edit");
         btnsEdit.forEach((btn) => {
             btn.addEventListener("click", async(e) => {
                 try {
-                    const doc = await getTask(e.target.dataset.id);
-                    const task = doc.data();
-                    taskForm["task-title"].value = task.title;
-                    taskForm["task-description"].value = task.description;
+                    const doc = await getClase(e.target.dataset.id);
+                    const Clase = doc.data();
+                    matricualasForm["Asignatura_nombre"].value = Clase.Asignatura_nombre;
+                    matricualasForm["Asignatura_Descripción"].value = Clase.Asignatura_Descripción;
 
                     editStatus = true;
                     id = doc.id;
-                    taskForm["btn-task-form"].innerText = "Update";
+                    matricualasForm["btn-matriculas-form"].innerText = "Update";
                 } catch (error) {
                     console.log(error);
                 }
@@ -71,27 +71,27 @@ window.addEventListener("DOMContentLoaded", async(e) => {
     });
 });
 
-taskForm.addEventListener("submit", async(e) => {
+matricualasForm.addEventListener("submit", async(e) => {
     e.preventDefault();
 
-    const title = taskForm["task-title"];
-    const description = taskForm["task-description"];
+    const Asignatura_nombre = matricualasForm["Asignatura_nombre"];
+    const Asignatura_Descripción = matricualasForm["Asignatura_Descripción"];
 
     try {
         if (!editStatus) {
-            await saveTask(title.value, description.value);
+            await saveClase(Asignatura_nombre.value, Asignatura_Descripción.value);
         } else {
-            await updateTask(id, {
-                title: title.value,
-                description: description.value,
+            await updateClase(id, {
+                Asignatura_nombre: Asignatura_nombre.value,
+                Asignatura_Descripción: Asignatura_Descripción.value,
             });
 
             editStatus = false;
             id = "";
-            taskForm["btn-task-form"].innerText = "Save";
+            matricualasForm["btn-matriculas-form"].innerText = "Save";
         }
 
-        taskForm.reset();
+        matricualasForm.reset();
         title.focus();
     } catch (error) {
         console.log(error);
