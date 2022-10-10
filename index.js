@@ -5,12 +5,20 @@ import {
     getClase,
     updateClase,
     getClases,
+    onGetEstudiantes,
+    saveEstudiante,
+    deleteEstudiante,
+    getEstudiante,
+    updateEstudiante,
+
+
 } from "./firebase.js";
 
 const matricualasForm = document.getElementById("matriculas-form");
 const matriculasContainer = document.getElementById("matriculas-container");
 
 let editStatus = false;
+//let id = "";
 let id = "";
 
 window.addEventListener("DOMContentLoaded", async(e) => {
@@ -26,30 +34,28 @@ window.addEventListener("DOMContentLoaded", async(e) => {
             const Clase = doc.data();
 
             matriculasContainer.innerHTML += `
-        <div class="card card-body mt-2 border-primary">
-      <h3 class="h5">${Clase.Asignatura_nombre}</h3>
-      <p>${Clase.Asignatura_Descripción}</p>
-      <div>
-        <button class="btn btn-primary btn-delete" data-id="${doc.id}">
-          🗑 Borrar
-        </button>
-        <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
-          🖉 Editar
-        </button>
-      </div>
-    </div>`;
+            <div class="card card-body mt-2 border-primary">
+          <h3 class="h5">${Clase.Asignatura_nombre}</h3>
+          <p>${Clase.Asignatura_Descripción}</p>
+          <div>
+            <button class="btn btn-primary btn-delete" data-id="${doc.id}">
+              🗑 Borrar
+            </button>
+            <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
+              🖉 Editar
+            </button>
+          </div>
+        </div>`;
         });
 
         const btnsDelete = matriculasContainer.querySelectorAll(".btn-delete");
-        btnsDelete.forEach((btn) =>
-            btn.addEventListener("click", async({ target: { dataset } }) => {
-                try {
-                    await deleteClase(dataset.id);
-                } catch (error) {
-                    console.log(error);
-                }
-            })
-        );
+        btnsDelete.forEach((btn) => btn.addEventListener("click", async({ target: { dataset } }) => {
+            try {
+                await deleteClase(dataset.id);
+            } catch (error) {
+                console.log(error);
+            }
+        }));
 
         const btnsEdit = matriculasContainer.querySelectorAll(".btn-edit");
         btnsEdit.forEach((btn) => {
@@ -69,6 +75,7 @@ window.addEventListener("DOMContentLoaded", async(e) => {
             });
         });
     });
+
 });
 
 matricualasForm.addEventListener("submit", async(e) => {
@@ -92,8 +99,9 @@ matricualasForm.addEventListener("submit", async(e) => {
         }
 
         matricualasForm.reset();
-        title.focus();
+        Asignatura_nombre.focus();
     } catch (error) {
         console.log(error);
     }
+
 });

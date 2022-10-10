@@ -36,11 +36,15 @@ export const db = getFirestore();
  * @param {string} Asignatura_nombre the title of the Task
  * @param {string} Asignatura_Descripción the description of the Task
  */
-export const saveClase = (Asignatura_nombre, Asignatura_Descripción) =>
-    addDoc(collection(db, "Clase"), { Asignatura_nombre, Asignatura_Descripción });
+export const saveClase = (Asignatura_nombre, Asignatura_Descripción) => addDoc(collection(db, "Clase"), { Asignatura_nombre, Asignatura_Descripción });
 
-export const onGetClases = (callback) =>
-    onSnapshot(collection(db, "Clase"), callback);
+export const onGetClases = (callback) => onSnapshot(collection(db, "Clase"), callback);
+
+
+
+export const saveEstudiante = (Estudiante_nombres, Estudiante_apellidos) => addDoc(collection(db, "Estudiante"), { Estudiante_nombres, Estudiante_apellidos });
+
+export const onGetEstudiantes = (callback) => onSnapshot(collection(db, "Estudiante"), callback);
 
 /**
  * export const saveTask = (title, description) =>
@@ -56,6 +60,7 @@ export const onGetClases = (callback) =>
 /**
  *
  * @param {string} id Task ID
+ * @param {string} id Task ID
  */
 
 
@@ -63,7 +68,23 @@ export const deleteClase = (id) => deleteDoc(doc(db, "Clase", id));
 
 export const getClase = (id) => getDoc(doc(db, "Clase", id));
 
-export const updateClase = (id, newFields) =>
-    updateDoc(doc(db, "Clase", id), newFields);
+export const updateClase = (id, newFields) => updateDoc(doc(db, "Clase", id), newFields);
 
 export const getClases = () => getDocs(collection(db, "Clase"));
+
+
+
+export const deleteEstudiante = (id) => deleteDoc(doc(db, "Estudiante", id));
+
+export const getEstudiante = (id) => getDoc(doc(db, "Estudiante", id));
+
+export const updateEstudiante = (id, newFields) => updateDoc(doc(db, "Estudiante", id), newFields);
+
+export const getEstudiantes = () => getDocs(collection(db, "Estudiante"));
+
+
+export const saveEnrollment = (Id_estudiante, Id_clase) => addDoc(collection(db, "Matriculas"), { Id_estudiante, Id_clase });
+
+export const onGetEnrollments = (callback) => onSnapshot(collection(db, "Matriculas"), callback);
+
+export const deleteEnrollment = (id) => deleteDoc(doc(db, "Matriculas", id));
