@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firebase CRUD</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css" />
 </head>
 
 <body class="bg-dark">
@@ -17,9 +18,11 @@
                 <div class="card text-white">
                     <div class="card-body">
                         <form id="matriculas-form">
+                            <div class="matriculas-form-logo">
+                                <img src="student.png" height="200px" />
+                            </div>
                             <h1 class="h4">Estudiante</h1>
                             <label for="title">Estudiante:</label>
-                            <!--<input type="text" id="task-title" class="form-control mb-3" class="My First Title" placeholder="Task Title" autofocus />-->
                             <input type="text" id="Estudiante_documento" class="form-control mb-3" class="Estudiante_documento" placeholder="Documento" autofocus />
                             <input type="text" id="Estudiante_apellidos" class="form-control mb-3" class="Estudiante_apellidos" placeholder="Apellidos" />
                             <input type="text" id="Estudiante_nombres" class="form-control mb-3" class="Estudiante_nombres" placeholder="Nombres" />
@@ -28,9 +31,9 @@
                             <input type="text" id="Asignatura_curso" class="form-control mb-3" class="Asignatura_curso" placeholder="Curso" />
                             <input type="text" id="Asignatura_nombre" class="form-control mb-3" class="Asignatura_nombre" placeholder="Nombre Asignatura" />
                             <textarea id="Asignatura_Descripción" rows="3" class="form-control mb-3" placeholder="Descripción de la asignatura"></textarea>
-                            <!--<label for="description">Description:</label>
-                            <textarea id="task-description" rows="3" class="form-control mb-3" placeholder="Task Description"></textarea>-->
-                            <button class="btn btn-primary" id="btn-matriculas-form">Guardar</button>
+                            <button class="btn btn-primary" id="btn-matriculas-form">
+                  Guardar
+                </button>
                         </form>
                     </div>
                 </div>

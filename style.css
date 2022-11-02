@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matriculas-form-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
